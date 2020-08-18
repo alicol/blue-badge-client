@@ -1,38 +1,173 @@
-.App {
+#img-wrapper {
+  background-color: #cfeae2;
+  background-image: url("./media/titlePage.jpg");
+  
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  
+}
+
+
+#main-header {
+  color: #ba542f;
   text-align: center;
+  font-size: 10vh;
+  font-weight: bold;
+  margin-top: 45vh;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#index-header {
+  color: #ba542f;
+  text-align: center;
+  font-size: 10vh;
+  font-weight: bold;
+  text-shadow: .3px .3px black;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#name-header {
+  text-align: center;
+  margin-top: 4vh;
+}
+#create-button {
+  background-color: #ba542f !important;
+  border-color: #ba542f !important;
+  text-align: center !important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#center-button {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin-top: 4vh;
+  margin-bottom:4vh;
+}
+
+#index-search-button {
+  background-color: #ba542f !important;
+  border-color: #ba542f !important;
+  text-align: center !important;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.card-style {
+  margin-top: 2vh;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.card-body-style {
+  background-color: #8b928f;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border-color: #8b928f;
 }
+
+.card-title-style {
+  margin: 15px;
+  font-weight: bold;
+  color:white;
+  font-size: 4vh;
+  text-shadow: .3px .3px black;
+}
+.card-text-style {
+  margin: 15px;
+  margin-left: 20px;
+  margin-top: 5px;
+  color: white;
+}
+.card-date-style {
+  background-color: #A3A8A6!important;
+  border-color: #A3A8A6 !important;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.card-date-text {
+  margin: 10px;
+  
+}
+
+
+
+Button {
+  background-color: #8b928f!important;
+  border-color: #8b928f !important;
+}
+Button:hover {
+  background-color: #A3A8A6!important;
+  border-color: #A3A8A6 !important;
+} 
+#card-button-style {
+  background-color: #ba542f !important;
+  border-color: #ba542f !important;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+
+#login-signup-button {
+  margin-top: 3vh;
+}
+
+
+.gray {
+  color: #8b928f !important;
+}
+
+.blue {
+  color: #cfeae2;
+}
+
+.flexbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.column{
+ display: flex;
+ flex-direction: column;
+ 
+}
+
+
+#blue-background {
+  background-color: #cfeae2;
+  background-position: center;
+  width: 100vw;
+  height: cover;
+}
+
+#index-top-pic {
+background-image: url('./media/PicnicTable.jpg');
+width: 100vw;
+height: 18vh;
+background-size: cover;
+display: flex;
+flex-direction: row;
+justify-content: flex-end;
+align-items: center;
+}
+
+#index-logout {
+ height: 3vh;
+ margin-right: 3vw;
+}
+
+#index-searchbar {
+  margin-top: 3vh;
+}
+
+
+#index-bottom-pic {
+  background-image: url('./media/picnicTableFull.jpg');
+  width: 100vw;
+  height: 18vh;
+  background-size: cover;
+  position: relative;
+  bottom: 0px;
+  background-position: bottom;
+  margin-top: 3vh;
+
+}
+
+.card-width {
+  width: 50vw;
+}
+
