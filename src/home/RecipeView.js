@@ -6,13 +6,14 @@ import Col from 'react-bootstrap/Col';
 import {BrowserRouter as Router} from 'react-router-dom';
 import Sidebar from './Sidebar';
 
+
 const RecipeView = (props) => {
 
 
 
     return (
         <div>
-            <Header>
+            
              <Modal
       {...props}
       size="lg"
@@ -25,18 +26,18 @@ const RecipeView = (props) => {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-          </Header>
+         
 
       {/* <Router>
                <Sidebar />
       </Router> */}
-<Footer>
+
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}>Close</Button>
       </Modal.Footer>
     </Modal>
-    </Footer>
+  
            
         </div>
     )

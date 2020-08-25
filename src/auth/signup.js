@@ -4,6 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import {useState} from "react";
+import APIUSER from '../helpers/environment';
 
 
 
@@ -14,7 +15,7 @@ const [password, setPassword] = useState('');
 const handleSubmit = (event) => {
     event.preventDefault();
     console.log("handleSubmit function ran");
-    fetch("http://localhost:3000/user/create", {
+    fetch(`${APIUSER}/user/create`, {
       method: "POST",
       body: JSON.stringify({
         user: { email: email, password: password },

@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form';
 import {
     useState
 } from "react";
+import APIURL from "../helpers/environment";
 
 
 
@@ -16,7 +17,7 @@ const Login = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log("handleSubmit function ran");
-        fetch("http://localhost:3000/user/login", {
+        fetch(`${APIURL}/user/login`, {
                 method: "POST",
                 body: JSON.stringify({
                     user: {

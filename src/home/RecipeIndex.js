@@ -8,6 +8,7 @@ import RecipeTable from './RecipeTable';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
+import APIUSER from '../helpers/environment';
 
 
 const RecipeIndex = (props) => {
@@ -15,7 +16,7 @@ const [recipes, setRecipes] = useState([]);
 const [createModalShow, setCreateModalShow] = React.useState(false);
 
 const fetchRecipes = () => {
-    fetch('http://localhost:3000/recipe/get', {
+    fetch(`${APIUSER}/recipe/get`, {
         method: "GET",
         headers: new Headers({
             "Content-Type": "application/json",
