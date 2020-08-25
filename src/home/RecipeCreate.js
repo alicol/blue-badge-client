@@ -1,11 +1,11 @@
-
-import React, {useEffect} from "react";
+import React, {useState} from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Col from 'react-bootstrap/Col';
 
-const { useState } = require("react")
+
+
 
 
 const RecipeCreate = (props) => {
@@ -17,6 +17,8 @@ const RecipeCreate = (props) => {
     const [directions, setDirections] = useState("");
     const [notes, setNotes] = useState("");
     const [rating, setRating] = useState(0);
+   
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -52,9 +54,15 @@ const RecipeCreate = (props) => {
             setNotes('');
             setRating('');
             props.fetchRecipes();
+            props.onHide();
+            
         });
     };
-    return ( <Modal {...props}
+    return ( <div>
+
+
+
+    <Modal {...props}
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
 centered>
@@ -101,7 +109,8 @@ centered>
   <Form.Row>
     <Form.Group controlId="formBasicRange" as={Col}>
     <Form.Label>Rating</Form.Label>
-    <Form.Control type="range" value={rating} onChange={e => setRating(e.target.value)} tooltip='auto' max={5} name="rating" />
+
+    <Form.Control type="range" value={rating} onChange={e => setRating(e.target.value)} defaultValue={0} max={5} name="rating" />
     </Form.Group>
 
     <Form.Group as={Col} controlId="formGridState">
@@ -126,6 +135,14 @@ centered>
         </Form> 
         </Modal.Body> 
         </Modal>
+
+        
+
+</div>
+  
+       
+ 
+  
     )
 }
 

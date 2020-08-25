@@ -25,7 +25,7 @@ const fetchRecipes = () => {
     .then((res) => res.json())
     .then((logData) => {
         setRecipes(logData);
-        console.log(logData);
+        
     });
 }
 
@@ -79,7 +79,7 @@ useEffect(() => {
           onHide={() => setCreateModalShow(false)}
           updateToken={props.updateToken}
           token={props.token}
-          fetchRecipes={fetchRecipes()}
+          fetchRecipes={fetchRecipes}
         />
         </div>
         <div id="index-bottom-pic"></div>

@@ -1,8 +1,10 @@
 import React, {useState} from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import RecipeView from "./RecipeView";
 
 const RecipeTable = (props) => {
+  const [modalShow, setModalShow] = React.useState(false);
 
 
     const recipeMapper = () => {
@@ -16,7 +18,7 @@ const RecipeTable = (props) => {
     <Card.Text class="card-text-style">
       {`${recipe.category}   -    Rating: ${recipe.rating}/5`}
     </Card.Text>
-    <Button variant="primary" id="card-button-style">View</Button>
+    <Button variant="primary" id="card-button-style" onClick={() => setModalShow(true)}>View</Button>
     <Button variant="primary" id="card-button-style">Edit</Button>
   </Card.Body>
   <Card.Footer class="card-date-style"><p class="card-date-text">Created: {recipe.createdAt}</p></Card.Footer>
@@ -29,6 +31,15 @@ const RecipeTable = (props) => {
     return (
        <div>
            {recipeMapper()}
+
+           <RecipeView
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+          updateToken={props.updateToken}
+          token={props.token}
+          
+        />
+
        </div>
     )
 }

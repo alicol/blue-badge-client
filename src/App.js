@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Auth from "./auth/auth";
 import RecipeIndex from "./home/RecipeIndex";
+import {BrowserRouter as Router} from 'react-router-dom';
 
 import './App.css';
 
