@@ -3,7 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Col from 'react-bootstrap/Col';
-import APIUSER from '../helpers/environment';
+import APIURL from '../helpers/environment';
 
 
 
@@ -23,7 +23,7 @@ const RecipeCreate = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch(`${APIUSER}/recipe/create`, {
+        fetch(`${APIURL}recipe/create`, {
             method: "POST",
             body: JSON.stringify({
                 recipe: {

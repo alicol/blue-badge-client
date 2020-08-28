@@ -17,7 +17,7 @@ const Login = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log("handleSubmit function ran");
-        fetch(`${APIURL}/user/login`, {
+        fetch(`${APIURL}user/login`, {
                 method: "POST",
                 body: JSON.stringify({
                     user: {
@@ -31,6 +31,9 @@ const Login = (props) => {
             })
             .then((response) => response.json())
             .then((data) => {
+                console.log(data);
+                props.setUserId(data.user.id);
+                props.setUserName(data.user.name);
                 props.updateToken(data.sessionToken);
                 console.log("logged in!")
             });

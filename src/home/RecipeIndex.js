@@ -9,14 +9,25 @@ import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import APIUSER from '../helpers/environment';
+import RecipeView from './RecipeView';
+import RecipeEdit from './RecipeEdit';
+import RecipeDelete from './RecipeDelete';
 
 
 const RecipeIndex = (props) => {
 const [recipes, setRecipes] = useState([]);
-const [createModalShow, setCreateModalShow] = React.useState(false);
+const [createModalShow, setCreateModalShow] = useState(false);
+const [modalShow, setModalShow] = useState(false);
+const [updateModalShow, setUpdateModalShow] = useState(false);
+const [recipeToView, setRecipeToView] = useState({});
+const [recipeToUpdate, setRecipeToUpdate] = useState({});
+const [deleteModalShow, setDeleteModalShow] = useState(false);
+const [recipeToDelete, setRecipeToDelete] = useState({});
+
+
 
 const fetchRecipes = () => {
-    fetch(`${APIUSER}/recipe/get`, {
+    fetch(`${APIUSER}recipe/get/${props.userId}`, {
         method: "GET",
         headers: new Headers({
             "Content-Type": "application/json",
@@ -30,8 +41,15 @@ const fetchRecipes = () => {
     });
 }
 
+
+// const editRecipeToView = (recipe) => {
+//     setRecipeToView(recipe);
+//     console.log(recipe);
+// }
+
 useEffect(() => {
     fetchRecipes();
+   
 }, []);
 
     return (
@@ -46,7 +64,7 @@ useEffect(() => {
             <Container>
                 <Row>
                 <Col xs={12} md={5}>
-                    {/* <h1>{props.user.name}'s</h1> */} <h1 id="name-header">Name's</h1>
+                    {/* <h1>{props.user.name}'s</h1> */} <h1 id="name-header">{`${props.userName}'s`}</h1>
                     <h1 id="index-header">Recipe Box</h1>
                     <div id="center-button">
                     <Button variant="primary" size="lg" id="create-button" onClick={() => setCreateModalShow(true)}>+ Create</Button>
@@ -69,7 +87,16 @@ useEffect(() => {
                     </div>
                     <RecipeTable recipes={recipes}
                     fetchRecipes={fetchRecipes}
-                    token={props.token} />
+                    token={props.token} 
+                    setModalShow={setModalShow}
+                    setRecipeToView={setRecipeToView}
+                    setRecipeToUpdate={setRecipeToUpdate}
+                    setUpdateModalShow={setUpdateModalShow}
+                    setDeleteModalShow={setDeleteModalShow}
+                    setRecipeToDelete={setRecipeToDelete}
+                    userId={props.userId}
+                    />
+
                 </div>
                 </Col>
             </Row>
@@ -78,10 +105,36 @@ useEffect(() => {
         <RecipeCreate
           show={createModalShow}
           onHide={() => setCreateModalShow(false)}
-          updateToken={props.updateToken}
+        //   updateToken={props.updateToken}
           token={props.token}
           fetchRecipes={fetchRecipes}
         />
+
+        <RecipeView
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+        //   updateToken={props.updateToken}
+          token={props.token}
+          recipeToView={recipeToView}
+          
+        />
+
+        <RecipeEdit
+        show={updateModalShow}
+        onHide={() => setUpdateModalShow(false)}
+        // updateToken={props.updateToken}
+        token={props.token}
+        recipeToUpdate={recipeToUpdate} 
+        fetchRecipes={fetchRecipes} />
+
+        <RecipeDelete
+        show={deleteModalShow}
+        onHide={() => setDeleteModalShow(false)}
+        token={props.token}
+        recipeToDelete={recipeToDelete}
+        fetchRecipes={fetchRecipes}
+        />
+        
         </div>
         <div id="index-bottom-pic"></div>
         </div>

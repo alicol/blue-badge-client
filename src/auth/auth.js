@@ -38,11 +38,15 @@ const Auth = (props) => {
           show={loginModalShow}
           onHide={() => setLoginModalShow(false)}
           updateToken={props.updateToken}
+          setUserId={props.setUserId}
+          setUserName={props.setUserName}
         />
         <Signup
           show={modalShow}
           onHide={() => setModalShow(false)}
           updateToken={props.updateToken}
+          setUserId={props.setUserId}
+          setUserName={props.setUserName}
         />
            
        </div>

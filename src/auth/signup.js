@@ -11,14 +11,15 @@ import APIUSER from '../helpers/environment';
 function Signup(props) {
 const [email, setEmail] = useState('');
 const [password, setPassword] = useState('');
+const [name, setName] = useState('');
 
 const handleSubmit = (event) => {
     event.preventDefault();
     console.log("handleSubmit function ran");
-    fetch(`${APIUSER}/user/create`, {
+    fetch(`${APIUSER}user/create`, {
       method: "POST",
       body: JSON.stringify({
-        user: { email: email, password: password },
+        user: { name: name, email: email, password: password },
       }),
       headers: new Headers({
         "Content-Type": "application/json",
@@ -26,6 +27,8 @@ const handleSubmit = (event) => {
     })
       .then((response) => response.json())
       .then((data) => {
+        props.setUserId(data.user.id);
+        props.setUserName(data.user.name);
         props.updateToken(data.sessionToken);
         console.log("logged in!")
       });
@@ -45,6 +48,14 @@ const handleSubmit = (event) => {
         </Modal.Header>
         <Modal.Body>
         <Form onSubmit={handleSubmit}>
+          
+        <Form.Group>
+    <Form.Label>Name</Form.Label>
+    <Form.Control type="name" placeholder="Name" onChange={(e) => setName(e.target.value)}
+    name="name"
+    value={name} />
+  </Form.Group>
+
   <Form.Group controlId="formBasicEmail">
     <Form.Label>Email address</Form.Label>
     <Form.Control type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)}

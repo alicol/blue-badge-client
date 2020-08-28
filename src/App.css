@@ -126,6 +126,11 @@ Button:hover {
  
 }
 
+#modal-footer-left-align {
+  margin-left: 10px !important;
+  margin-right: auto !important;
+}
+
 
 #blue-background {
   background-color: #cfeae2;
