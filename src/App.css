@@ -8,6 +8,11 @@
   
 }
 
+@font-face { 
+  font-family: 'Dancing-Script';
+  src: url('DancingScript-VariableFont_wght.ttf');
+}
+
 
 #main-header {
   color: #ba542f;
@@ -24,11 +29,14 @@
   font-size: 10vh;
   font-weight: bold;
   text-shadow: .3px .3px black;
+  
 }
 
 #name-header {
   text-align: center;
-  margin-top: 4vh;
+  margin-top: 7vh;
+  font-size: 8vh;
+  font-family: "Dancing-Script";
 }
 #create-button {
   background-color: #ba542f !important;
@@ -48,6 +56,25 @@
   border-color: #ba542f !important;
   text-align: center !important;
   color: white;
+}
+
+#link-flexbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+}
+
+.switch-links {
+  color: #ba542f !important;
+}
+#recipes-button {
+ margin-top: 0px !important;
+ margin-right: 10px !important;
+}
+
+#resources-button {
+margin-bottom: 0px !important;
 }
 
 .card-style {

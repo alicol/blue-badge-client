@@ -53,7 +53,7 @@ const RecipeCreate = (props) => {
             setIngredients('');
             setDirections('');
             setNotes('');
-            setRating('');
+            setRating(0);
             props.fetchRecipes();
             props.onHide();
             

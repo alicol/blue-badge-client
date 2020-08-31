@@ -12,10 +12,16 @@ function Signup(props) {
 const [email, setEmail] = useState('');
 const [password, setPassword] = useState('');
 const [name, setName] = useState('');
+// const expression = /\S+@\S+/;
+// var validEmail = expression.test(String(email).toLowerCase());
 
 const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("handleSubmit function ran");
+    
+// if (!validEmail){
+//   console.log('Invalid Email')
+// }else {
+
     fetch(`${APIUSER}user/create`, {
       method: "POST",
       body: JSON.stringify({
@@ -33,7 +39,7 @@ const handleSubmit = (event) => {
         console.log("logged in!")
       });
   };
-
+// }
     return (
       <Modal
         {...props}
