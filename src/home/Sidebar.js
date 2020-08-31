@@ -22,7 +22,7 @@ const Sidebar = (props) => {
          <Switch>
             
              <Route exact path="/recipe"><RecipeTable recipes={props.recipes}
-                    fetchRecipes={props.fetchRecipes}
+                    getRecipes={props.getRecipes}
                     token={props.token} 
                     setModalShow={props.setModalShow}
                     setRecipeToView={props.setRecipeToView}

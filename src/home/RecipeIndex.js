@@ -27,53 +27,50 @@ const [deleteModalShow, setDeleteModalShow] = useState(false);
 const [recipeToDelete, setRecipeToDelete] = useState({});
 const [keyword, setKeyword] = useState("");
 
+const getRecipes = () => {
+
+    const fetchRecipes = () => {
+        fetch(`${APIUSER}recipe/get/${props.userId}`, {
+            method: "GET",
+            headers: new Headers({
+                "Content-Type": "application/json",
+                Authorization: props.token,
+            }),
+        })
+        .then((res) => res.json())
+        .then((logData) => {
+            setRecipes(logData);
+            
+        });
+    }
+
+    const fetchKeyword = () => {
+        fetch(`${APIUSER}recipe/search/${keyword}`, {
+            method: "GET",
+            headers: new Headers({
+                "Content-Type": "application/json",
+                Authorization: props.token,
+            }),
+        })
+        .then((res) => res.json())
+        .then((logData) => {
+            console.log(logData[0]);
+            setRecipes(logData[0]);
+        });
+    }    
 
 
-const fetchRecipes = () => {
-    fetch(`${APIUSER}recipe/get/${props.userId}`, {
-        method: "GET",
-        headers: new Headers({
-            "Content-Type": "application/json",
-            Authorization: props.token,
-        }),
-    })
-    .then((res) => res.json())
-    .then((logData) => {
-        setRecipes(logData);
-        
-    });
+if (keyword === ''){
+  fetchRecipes(); 
+} else {
+    fetchKeyword();
 }
-
-const fetchKeyword = () => {
-    fetch(`${APIUSER}recipe/search/${keyword}`, {
-        method: "GET",
-        headers: new Headers({
-            "Content-Type": "application/json",
-            Authorization: props.token,
-        }),
-    })
-    .then((res) => res.json())
-    .then((logData) => {
-        console.log(logData);
-    });
 }
-
-
-// const editRecipeToView = (recipe) => {
-//     setRecipeToView(recipe);
-//     console.log(recipe);
-// }
-
 
 //CHECK THIS!!!!!!!
 useEffect(() => {
-        if (keyword !== ""){
-        fetchKeyword();}}, []); 
-  
-useEffect(() => {
-    if (keyword == ""){
-    fetchRecipes();
-   }}, []); 
+        getRecipes();}, []); 
+
 
     return (
         <div id="blue-background">
@@ -107,14 +104,14 @@ useEffect(() => {
       onChange={(e)=> setKeyword(e.target.value)}
     />
     <InputGroup.Append>
-      <Button variant="outline-secondary" id="index-search-button" onClick={fetchKeyword}>Search</Button>
+      <Button variant="outline-secondary" id="index-search-button" onClick={getRecipes}>Search</Button>
     </InputGroup.Append>
   </InputGroup>
 
                     </div>
                     <Router>
                     <Sidebar recipes={recipes}
-                    fetchRecipes={fetchRecipes}
+                    getRecipes={getRecipes}
                     token={props.token} 
                     setModalShow={setModalShow}
                     setRecipeToView={setRecipeToView}
@@ -135,15 +132,15 @@ useEffect(() => {
         <RecipeCreate
           show={createModalShow}
           onHide={() => setCreateModalShow(false)}
-        //   updateToken={props.updateToken}
+      
           token={props.token}
-          fetchRecipes={fetchRecipes}
+          getRecipes={getRecipes}
         />
 
         <RecipeView
           show={modalShow}
           onHide={() => setModalShow(false)}
-        //   updateToken={props.updateToken}
+        
           token={props.token}
           recipeToView={recipeToView}
           
@@ -152,17 +149,17 @@ useEffect(() => {
         <RecipeEdit
         show={updateModalShow}
         onHide={() => setUpdateModalShow(false)}
-        // updateToken={props.updateToken}
+        
         token={props.token}
         recipeToUpdate={recipeToUpdate} 
-        fetchRecipes={fetchRecipes} />
+        getRecipes={getRecipes} />
 
         <RecipeDelete
         show={deleteModalShow}
         onHide={() => setDeleteModalShow(false)}
         token={props.token}
         recipeToDelete={recipeToDelete}
-        fetchRecipes={fetchRecipes}
+        getRecipes={getRecipes}
         />
         
         </div>

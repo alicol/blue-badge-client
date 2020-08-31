@@ -55,7 +55,7 @@ const RecipeEdit = (props) => {
             // setEditDirections('');
             // setEditNotes('');
             // setEditRating('');
-            props.fetchRecipes();
+            props.getRecipes();
             props.onHide();
             console.log('editRecipeName');
             

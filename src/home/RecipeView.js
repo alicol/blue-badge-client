@@ -66,7 +66,7 @@ useEffect(() => {
       </Modal.Body>
       <Modal.Footer>
       <h7 id="modal-footer-left-align">{`This recipe is from ${props.recipeToView.source}.`}</h7>
-        <Button OnClick={props.onHide}>Close</Button>
+        {/* <Button OnClick={props.onHide}>Close</Button> */}
       </Modal.Footer>
     </Modal>
    

@@ -15,7 +15,7 @@ const RecipeDelete = (props) => {
             Authorization: props.token,
         }),
     })
-        .then(() => props.fetchRecipes());
+        .then(() => props.getRecipes());
         props.onHide();
 
     };

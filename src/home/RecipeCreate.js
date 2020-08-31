@@ -54,7 +54,7 @@ const RecipeCreate = (props) => {
             setDirections('');
             setNotes('');
             setRating(0);
-            props.fetchRecipes();
+            props.getRecipes();
             props.onHide();
             
         });
